@@ -6,10 +6,12 @@
 	</head>
 	<body>
 		<label for="commands">Choose command:</label><br>
-		<select id="commands" name="commands">
+		<select id="commands" name="commands" onchange="getCommand()">
 		  <option value="epic_mode_1">T1 Epic Mode</option>
 		  <option value="epic_mode_2">T2 Epic Mode</option>
 		</select>
+		<br>
+		<p id="commandSelection"></p>
 		<br>
 		<button id="discoverBluetoothBtn">Discover T800 Device</button>
 	</body>
@@ -19,11 +21,6 @@
 		const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
 
 		var command = "";	
-		const selectElement = document.querySelector('.commands');
-		selectElement.addEventListener('change', (event) => {
-		  const result = document.querySelector('.result');
-		  command = event.target.value;
-		});
 		
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
 		  	navigator.bluetooth.requestDevice({
@@ -52,6 +49,11 @@
 			    console.log('Argh! ' + error);
 		  });
 		});
+
+		function getCommand() {
+		  command = document.getElementById("commands").value;
+		  document.getElementById("commandSelection").innerHTML = "You selected: " + command;
+		}
 
 		function str2ab(str) {
 		  var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
