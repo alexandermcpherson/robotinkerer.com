@@ -9,21 +9,24 @@
 	</body>
 	<script>
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
-		  navigator.bluetooth.requestDevice({
-		    acceptAllDevices: true
-		  })
-		  .then(device => {
-		    console.log('> Requested ' + device.name + ' (' + device.id + ')');
-		    
-		    // Attempts to connect to remote GATT Server.
-  			return device.gatt.connect();
-		  })
-		  .then(characteristic => {
-			  const epicMode1 = "epic_mode_1"
-			  return characteristic.writeValueWithoutResponse(epicMode1);
-			})
-		  .catch(error => {
-		    console.log('Argh! ' + error);
+		  	navigator.bluetooth.requestDevice({
+			    // acceptAllDevices: true
+			    filters: [{
+				    name: 'DSD TECH'
+				  }]
+			  	})
+			  	.then(device => {
+			    console.log('> Requested ' + device.name + ' (' + device.id + ')');
+			    
+			    // Attempts to connect to remote GATT Server.
+	  			return device.gatt.connect();
+			  	})
+			  	.then(characteristic => {
+				  const epicMode1 = "epic_mode_1"
+				  return characteristic.writeValueWithoutResponse(epicMode1);
+				})
+			  .catch(error => {
+			    console.log('Argh! ' + error);
 		  });
 		});
 	</script>
