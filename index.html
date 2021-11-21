@@ -13,10 +13,10 @@
 		    acceptAllDevices: true
 		  })
 		  .then(device => {
-		    log('> Requested ' + device.name + ' (' + device.id + ')');
+		    console.log('> Requested ' + device.name + ' (' + device.id + ')');
 		  })
 		  .catch(error => {
-		    log('Argh! ' + error);
+		    console.log('Argh! ' + error);
 		  });
 		});
 	</script>
