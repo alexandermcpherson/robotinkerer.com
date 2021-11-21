@@ -12,7 +12,7 @@
 		  	navigator.bluetooth.requestDevice({
 			    filters: [{
 				    name: 'DSD TECH',
-				    services: ['FFE0']
+				    services: ['0000ffe0-0000-1000-8000-00805f9b34fb']
 				  }]
 			  	})
 			  	.then(device => {
@@ -21,7 +21,7 @@
 		  			return device.gatt.connect();
 			  	})
 			  	.then(server => {
-				  	return server.getPrimaryService('FFE0');
+				  	return server.getPrimaryService('0000ffe0-0000-1000-8000-00805f9b34fb');
 				})
 				.then(service => {
 				  	return service.getCharacteristic('FFE1');
