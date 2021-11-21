@@ -5,6 +5,11 @@
 		<title>Page Title</title>
 	</head>
 	<body>
-		<button>Discover Bluetooth devices</button>
+		<button>Discover Bluetooth Devices</button>
 	</body>
+	<script>
+		button.addEventListener('pointerup', function(event) {
+		  navigator.bluetooth.requestDevice
+		});
+	</script>
 </html>
