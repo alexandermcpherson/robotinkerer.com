@@ -18,11 +18,12 @@
 		const bluetoothUUIDservice = '0000ffe0-0000-1000-8000-00805f9b34fb';
 		const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
 
-		var command = "";
-		var commandSelector = document.getElementById("commands").addEventListener('change', function() {;
-			command = commandSelector.value;
+		var command = "";	
+		const selectElement = document.querySelector('.commands');
+		selectElement.addEventListener('change', (event) => {
+		  const result = document.querySelector('.result');
+		  command = event.target.value;
 		});
-		
 		
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
 		  	navigator.bluetooth.requestDevice({
