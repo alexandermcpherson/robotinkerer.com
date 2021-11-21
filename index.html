@@ -18,10 +18,10 @@
 		const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
 
 		var command = "";
-		document.querySelector('commands').addEventListner('change', function() {
+		document.getElementById('commands').addEventListner('change', function() {
 			command = select.value;    
 		});
-
+		
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
 		  	navigator.bluetooth.requestDevice({
 			    filters: [{
