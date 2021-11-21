@@ -27,12 +27,22 @@
 				  	return service.getCharacteristic('0000ffe1-0000-1000-8000-00805f9b34fb');
 				})
 			  	.then(characteristic => {
-					const epicMode1 = "epic_mode_1"
-					return characteristic.writeValueWithoutResponse(epicMode1);
+					const epicMode1 = "epic_mode_1";
+					var stringArray = str2ab(epicMode1);
+					return characteristic.writeValueWithoutResponse(stringArray);
 				})
 			  .catch(error => {
 			    console.log('Argh! ' + error);
 		  });
 		});
+
+		function str2ab(str) {
+		  var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
+		  var bufView = new Uint8Array(buf);
+		  for (var i=0, strLen=str.length; i < strLen; i++) {
+		    bufView[i] = str.charCodeAt(i);
+		  }
+		  return buf;
+		}
 	</script>
 </html>
