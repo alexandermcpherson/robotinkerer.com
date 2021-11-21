@@ -10,20 +10,25 @@
 	<script>
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
 		  	navigator.bluetooth.requestDevice({
-			    // acceptAllDevices: true
 			    filters: [{
-				    name: 'DSD TECH'
+				    name: 'DSD TECH',
+				    services: ['FFE0']
 				  }]
 			  	})
 			  	.then(device => {
-			    console.log('> Requested ' + device.name + ' (' + device.id + ')');
-			    
-			    // Attempts to connect to remote GATT Server.
-	  			return device.gatt.connect();
+			    	console.log('> Requested ' + device.name + ' (' + device.id + ')');
+				    // Attempts to connect to remote GATT Server.
+		  			return device.gatt.connect();
 			  	})
+			  	.then(server => {
+				  	return server.getPrimaryService('FFE0');
+				})
+				.then(service => {
+				  	return service.getCharacteristic('FFE1');
+				})
 			  	.then(characteristic => {
-				  const epicMode1 = "epic_mode_1"
-				  return characteristic.writeValueWithoutResponse(epicMode1);
+					const epicMode1 = "epic_mode_1"
+					return characteristic.writeValueWithoutResponse(epicMode1);
 				})
 			  .catch(error => {
 			    console.log('Argh! ' + error);
