@@ -14,6 +14,9 @@
 		  })
 		  .then(device => {
 		    console.log('> Requested ' + device.name + ' (' + device.id + ')');
+		    
+		    // Attempts to connect to remote GATT Server.
+  			return device.gatt.connect();
 		  })
 		  .catch(error => {
 		    console.log('Argh! ' + error);
