@@ -5,14 +5,17 @@
 		<title>T800-Controller</title>
 	</head>
 	<body>
-		<button id="discoverBluetoothBtn">Discover Bluetooth Devices</button>
+		<button id="discoverBluetoothBtn">Discover T800 Device</button>
 	</body>
 	<script>
+		const bluetoothName = 'DSD TECH';
+		const bluetoothUUID = '0000ffe0-0000-1000-8000-00805f9b34fb';
+		
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
 		  	navigator.bluetooth.requestDevice({
 			    filters: [{
-				    name: 'DSD TECH',
-				    services: ['0000ffe0-0000-1000-8000-00805f9b34fb']
+				    name: bluetoothName,
+				    services: [bluetoothUUID]
 				  }]
 			  	})
 			  	.then(device => {
@@ -21,10 +24,10 @@
 		  			return device.gatt.connect();
 			  	})
 			  	.then(server => {
-				  	return server.getPrimaryService('0000ffe0-0000-1000-8000-00805f9b34fb');
+				  	return server.getPrimaryService(bluetoothUUID);
 				})
 				.then(service => {
-				  	return service.getCharacteristic('0000ffe1-0000-1000-8000-00805f9b34fb');
+				  	return service.getCharacteristic(bluetoothUUID);
 				})
 			  	.then(characteristic => {
 					const epicMode1 = "epic_mode_1";
