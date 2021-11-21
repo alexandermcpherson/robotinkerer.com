@@ -18,6 +18,10 @@
 		    // Attempts to connect to remote GATT Server.
   			return device.gatt.connect();
 		  })
+		  .then(characteristic => {
+			  const epicMode1 = "epic_mode_1"
+			  return characteristic.writeValue(epicMode1);
+			})
 		  .catch(error => {
 		    console.log('Argh! ' + error);
 		  });
