@@ -8,9 +8,16 @@
 		<button id="discoverBluetoothBtn">Discover Bluetooth Devices</button>
 	</body>
 	<script>
-		document.getElementById("discoverBluetoothBtn").addEventListener('click', function(event) {
-		  navigator.bluetooth.requestDevice
-		  console.log("Poo");
+		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
+		  navigator.bluetooth.requestDevice({
+		    acceptAllDevices: true
+		  })
+		  .then(device => {
+		    log('> Requested ' + device.name + ' (' + device.id + ')');
+		  })
+		  .catch(error => {
+		    log('Argh! ' + error);
+		  });
 		});
 	</script>
 </html>
