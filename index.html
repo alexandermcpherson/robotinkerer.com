@@ -5,12 +5,22 @@
 		<title>T800-Controller</title>
 	</head>
 	<body>
+		<label for="commands">Choose command:</label>
+		<select id="commands" name="commands">
+		  <option value="epic_mode_1">T1 Epic Mode</option>
+		  <option value="epic_mode_1">T2 Epic Mode</option>
+		</select>
 		<button id="discoverBluetoothBtn">Discover T800 Device</button>
 	</body>
 	<script>
 		const bluetoothName = 'DSD TECH';
 		const bluetoothUUIDservice = '0000ffe0-0000-1000-8000-00805f9b34fb';
 		const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
+
+		var command = "";
+		document.querySelector('commands').addEventListner('change', function() {
+			command = select.value;    
+		});
 
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
 		  	navigator.bluetooth.requestDevice({
@@ -31,8 +41,8 @@
 				  	return service.getCharacteristic(bluetoothUUIDcharacteristic);
 				})
 			  	.then(characteristic => {
-					const epicMode1 = "epic_mode_1";
-					var stringArray = str2ab(epicMode1);
+					// const epicMode1 = "epic_mode_1";
+					var stringArray = str2ab(command);
 					return characteristic.writeValueWithoutResponse(stringArray);
 				})
 			  .catch(error => {
