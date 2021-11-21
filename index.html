@@ -5,10 +5,10 @@
 		<title>Page Title</title>
 	</head>
 	<body>
-		<button>Discover Bluetooth Devices</button>
+		<button id="discoverBluetoothBtn">Discover Bluetooth Devices</button>
 	</body>
 	<script>
-		button.addEventListener('click', function(event) {
+		document.getElementById("discoverBluetoothBtn").addEventListener('click', function(event) {
 		  navigator.bluetooth.requestDevice
 		  console.log("Poo");
 		});
