@@ -9,13 +9,14 @@
 	</body>
 	<script>
 		const bluetoothName = 'DSD TECH';
-		const bluetoothUUID = '0000ffe0-0000-1000-8000-00805f9b34fb';
-		
+		const bluetoothUUIDservice = '0000ffe0-0000-1000-8000-00805f9b34fb';
+		const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
+
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
 		  	navigator.bluetooth.requestDevice({
 			    filters: [{
 				    name: bluetoothName,
-				    services: [bluetoothUUID]
+				    services: [bluetoothUUIDservice]
 				  }]
 			  	})
 			  	.then(device => {
@@ -24,10 +25,10 @@
 		  			return device.gatt.connect();
 			  	})
 			  	.then(server => {
-				  	return server.getPrimaryService(bluetoothUUID);
+				  	return server.getPrimaryService(bluetoothUUIDservice);
 				})
 				.then(service => {
-				  	return service.getCharacteristic(bluetoothUUID);
+				  	return service.getCharacteristic(bluetoothUUIDcharacteristic);
 				})
 			  	.then(characteristic => {
 					const epicMode1 = "epic_mode_1";
