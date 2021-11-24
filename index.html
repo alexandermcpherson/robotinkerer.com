@@ -5,6 +5,42 @@
 		<title>T800-Controller</title>
 	</head>
 	<body>
+		<label for="speech-commands">Choose Speech command:</label><br>
+		<select id="speech-commands" name="speech-commands" onchange="getSpeechCommand()">
+			<optgroup label = "T1">
+				<option value="sc" selected="selected">Sarah Connor</option>
+				<option value="fya">Fuck you asshole</option>
+				<option value="ibb">Ill be back</option>
+				<option value="ycgttmn">Your clothes give them to me now</option>
+			  	<option value="ncr">Nothing clean right</option>
+				<option value="45lswls">45 Long Slide with Lazer sighting</option>
+				<option value="go">Get out</option>				
+			  	<option value="u9">Uzi 9mm</option>
+		  	</optgroup>
+		  	<optgroup label = "T2">
+		  		<option value="alvb" selected="selected">Asta La Vista Baby</option>
+				<option value="np">No problemo</option>
+				<option value="ibb">Ill be back</option>
+				<option value="tm">Trust me</option>
+			  	<option value="ltmvc">Listen to me very carefully</option>
+				<option value="iaat">I am a Terminator</option>
+				<option value="csm1">Cyberdyne systems Model 101</option>				
+			  	<option value="inycybaym">I need your clothes your boots and your motorcycle</option>
+				<option value="toommp">Thats one of my mission parameters</option>
+				<option value="iknwyc">I now know why you cry</option>
+				<option value="hl">He'll live</option>
+			  	<option value="cd">Chillout dickwad</option>
+				<option value="4cwmiywtl">Come with me if you want to live</option>
+		  	</optgroup>
+		  	<optgroup label = "T3">
+		  		<option value="iaam" selected="selected">I am a machine</option>
+				<option value="yat">You are Terminated</option>
+				<option value="ddt">Don't do that</option>
+			</optgroup> 
+		</select>
+		<br>
+		<p id="speechCommandSelection">You selected: Sarah Connor</p>
+		<br>
 		<label for="movement-commands">Choose Movement command:</label><br>
 		<select id="movement-commands" name="movement-commands" onchange="getMovementCommand()">
 			<option value="activate" selected="selected">Activate T800</option>
@@ -16,7 +52,7 @@
 		  	<option value="epic_mode_2">T2 Epic Mode</option>
 		</select>
 		<br>
-		<p id="commandSelection">You selected: Activate T800</p>
+		<p id="movementCommandSelection">You selected: Activate T800</p>
 		<br>
 		<button id="discoverBluetoothBtn">Discover T800 Device</button>
 	</body>
@@ -56,11 +92,16 @@
 		  });
 		});
 
+		function getspeechCommand() {
+			const commandSelection = document.getElementById("speech-commands")
+		  	command = commandSelection.value
+		  	document.getElementById("speechCommandSelection").innerHTML = "You selected: " + commandSelection.options[commandSelection.selectedIndex].text;
+		}
+
 		function getMovementCommand() {
 			const commandSelection = document.getElementById("movement-commands")
 		  	command = commandSelection.value
-
-		  document.getElementById("commandSelection").innerHTML = "You selected: " + commandSelection.options[commandSelection.selectedIndex].text;
+		  	document.getElementById("movementCommandSelection").innerHTML = "You selected: " + commandSelection.options[commandSelection.selectedIndex].text;
 		}
 
 		function str2ab(str) {
