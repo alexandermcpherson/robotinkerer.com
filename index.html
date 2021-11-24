@@ -16,7 +16,7 @@
 		  	<option value="epic_mode_2">T2 Epic Mode</option>
 		</select>
 		<br>
-		<p id="commandSelection">Activate T800</p>
+		<p id="commandSelection">You selected: Activate T800</p>
 		<br>
 		<button id="discoverBluetoothBtn">Discover T800 Device</button>
 	</body>
@@ -57,8 +57,10 @@
 		});
 
 		function getMovementCommand() {
-		  command = document.getElementById("movement-commands").value;
-		  document.getElementById("commandSelection").innerHTML = "You selected: " + command;
+			const commandSelection = document.getElementById("movement-commands")
+		  	command = commandSelection.value
+
+		  document.getElementById("commandSelection").innerHTML = "You selected: " + commandSelection.options[commandSelection.selectedIndex].text;
 		}
 
 		function str2ab(str) {
