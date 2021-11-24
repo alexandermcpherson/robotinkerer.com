@@ -5,17 +5,23 @@
 		<title>T800-Controller</title>
 	</head>
 	<body>
-		<label for="commands">Choose command:</label><br>
-		<select id="commands" name="commands" onchange="getCommand()">
-		  <option value="epic_mode_1" selected="selected">T1 Epic Mode</option>
-		  <option value="epic_mode_2">T2 Epic Mode</option>
+		<label for="movement-commands">Choose Movement command:</label><br>
+		<select id="movement-commands" name="movement-commands" onchange="getMovementCommand()">
+			<option value="activate" selected="selected">Activate T800</option>
+			<option value="deactivate">Deactivate T800</option>
+			<option value="randomHeadlr">Random Head left to right</option>
+			<option value="randomHeadud">Random Head up and down</option>
+			<option value="randomHeadfr">Random Head full range</option>				
+		  	<option value="epic_mode_1">T1 Epic Mode</option>
+		  	<option value="epic_mode_2">T2 Epic Mode</option>
 		</select>
 		<br>
-		<p id="commandSelection">Command</p>
+		<p id="commandSelection">Activate T800</p>
 		<br>
 		<button id="discoverBluetoothBtn">Discover T800 Device</button>
 	</body>
 	<script>
+
 		const bluetoothName = 'DSD TECH';
 		const bluetoothUUIDservice = '0000ffe0-0000-1000-8000-00805f9b34fb';
 		const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
@@ -50,8 +56,8 @@
 		  });
 		});
 
-		function getCommand() {
-		  command = document.getElementById("commands").value;
+		function getMovementCommand() {
+		  command = document.getElementById("movement-commands").value;
 		  document.getElementById("commandSelection").innerHTML = "You selected: " + command;
 		}
 
