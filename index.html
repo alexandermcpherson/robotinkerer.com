@@ -113,7 +113,7 @@
 		function sendCommand() {
 			var stringArray = str2ab(command);
 			logCommand(command);
-			myDescriptor.writeValueWithoutResponse(stringArray);
+			myDescriptor.writeValueWithoutResponse(stringArray)
 			.then(_ => {
 			    console.log('> Characteristic User Description changed to: ' + command);
 			})
