@@ -110,7 +110,7 @@
 			sendCommand();
 		});
 
-		function sendCommand(event) {
+		function sendCommand() {
 			var stringArray = str2ab(command);
 			logCommand(command);
 			myDescriptor.writeValueWithoutResponse(stringArray);
