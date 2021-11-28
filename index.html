@@ -64,29 +64,29 @@
 		const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
 
 		var command = "";
-		var bt;	// Bluetooth promise object
+		var bt = navigator.bluetooth;	// Bluetooth promise object
 		
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
-		  	bt = navigator.bluetooth.requestDevice({
-			    filters: [{
-				    name: bluetoothName,
-				    services: [bluetoothUUIDservice]
-				  }]
-			  	})
-			  	.then(device => {
-			    	console.log('> Requested ' + device.name + ' (' + device.id + ')');
-				    // Attempts to connect to remote GATT Server.
-		  			return device.gatt.connect();
-			  	})
-			  	.then(server => {
-				  	return server.getPrimaryService(bluetoothUUIDservice);
-				})
-				.then(service => {
-				  	return service.getCharacteristic(bluetoothUUIDcharacteristic);
-				})
-				.catch(error => {
-				    logError(error);
-		  		});
+		  	bt.requestDevice({
+		    filters: [{
+			    name: bluetoothName,
+			    services: [bluetoothUUIDservice]
+			  }]
+		  	})
+		  	.then(device => {
+		    	console.log('> Requested ' + device.name + ' (' + device.id + ')');
+			    // Attempts to connect to remote GATT Server.
+	  			return device.gatt.connect();
+		  	})
+		  	.then(server => {
+			  	return server.getPrimaryService(bluetoothUUIDservice);
+			})
+			.then(service => {
+			  	return service.getCharacteristic(bluetoothUUIDcharacteristic);
+			})
+			.catch(error => {
+			    logError(error);
+	  		});
 		});
 
 		document.getElementById("sendSpeechCommandBtn").addEventListener('click', function() {
