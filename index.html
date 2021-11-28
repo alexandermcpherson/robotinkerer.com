@@ -64,7 +64,7 @@
 		const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
 
 		var command = "";
-		var characteristic;
+		var myDescriptor;
 		
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
 		  	navigator.bluetooth.requestDevice({
@@ -85,8 +85,18 @@
 			  	return service.getCharacteristic(bluetoothUUIDcharacteristic);
 			})
 			.then(characteristic => {
-				characteristic.addEventListener('characteristicvaluechanged', sendCommand);
-			})
+			    log('Getting Descriptor...');
+			    return characteristic.getDescriptor('gatt.characteristic_user_description');
+			 })
+			.then(descriptor => {
+			    myDescriptor = descriptor;
+			    log('Reading Descriptor...');
+			    return descriptor.readValue();
+			 })
+			.then(value => {
+			    let decoder = new TextDecoder('utf-8');
+			    log('> Characteristic User Description: ' + decoder.decode(value));
+			 })
 			.catch(error => {
 			    logError(error);
 	  		});
@@ -103,7 +113,13 @@
 		function sendCommand(event) {
 			var stringArray = str2ab(command);
 			logCommand(command);
-			event.writeValueWithoutResponse(stringArray);
+			myDescriptor.writeValueWithoutResponse(stringArray);
+			.then(_ => {
+			    console.log('> Characteristic User Description changed to: ' + command);
+			})
+			.catch(error => {
+			   console.log('Argh! ' + error);
+			});
 		}
 
 		function logCommand(command) {
