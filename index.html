@@ -100,11 +100,15 @@
 		function sendCommand() {
 			bt.then(characteristic => {
 				var stringArray = str2ab(command);
-				console.log(command);
+				logCommand(command);
 				return characteristic.writeValueWithoutResponse(stringArray);
 			}).catch(error => {
 			   logError(error); 
 			});
+		}
+
+		function logCommand(command) {
+			console.log('Command' + command);
 		}	
 
 		function logError(error) {
