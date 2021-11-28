@@ -64,10 +64,10 @@
 		const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
 
 		var command = "";
-		var bt;	// Bluetooth promise object
+		// var bt;	// Bluetooth promise object
 		
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
-		  	bt = navigator.bluetooth.requestDevice({
+		  	navigator.bluetooth.requestDevice({
 		    filters: [{
 			    name: bluetoothName,
 			    services: [bluetoothUUIDservice]
@@ -98,7 +98,9 @@
 		});
 
 		function sendCommand() {
-			bt.then(characteristic => {
+			navigator.bluetooth.requestDevice({
+		  	})
+			.then(characteristic => {
 				var stringArray = str2ab(command);
 				logCommand(command);
 				return characteristic.writeValueWithoutResponse(stringArray);
