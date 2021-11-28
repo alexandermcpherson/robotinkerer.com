@@ -89,7 +89,7 @@
 				// 	return characteristic.writeValueWithoutResponse(stringArray);
 				// })
 			  .catch(error => {
-			    console.log('Argh! ' + error);
+			    logError(error);
 		  });
 		});
 
@@ -105,7 +105,12 @@
 			bt.then(characteristic => {
 					var stringArray = str2ab(command);
 					return characteristic.writeValueWithoutResponse(stringArray);
-			})
+			}).catch(error => {
+			   logError(error); 
+		}	
+
+		function logError(error) {
+			console.log('Error: ' + error);
 		}
 
 		function getSpeechCommand() {
