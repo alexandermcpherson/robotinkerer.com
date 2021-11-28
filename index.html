@@ -84,13 +84,9 @@
 				.then(service => {
 				  	return service.getCharacteristic(bluetoothUUIDcharacteristic);
 				})
-			 //  	.then(characteristic => {
-				// 	var stringArray = str2ab(command);
-				// 	return characteristic.writeValueWithoutResponse(stringArray);
-				// })
-			  .catch(error => {
-			    logError(error);
-		  });
+				.catch(error => {
+				    logError(error);
+		  		});
 		});
 
 		document.getElementById("sendSpeechCommandBtn").addEventListener('click', function() {
@@ -107,6 +103,7 @@
 				return characteristic.writeValueWithoutResponse(stringArray);
 			}).catch(error => {
 			   logError(error); 
+			});
 		}	
 
 		function logError(error) {
