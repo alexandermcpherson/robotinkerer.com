@@ -103,8 +103,8 @@
 
 		function sendCommand() {
 			bt.then(characteristic => {
-					var stringArray = str2ab(command);
-					return characteristic.writeValueWithoutResponse(stringArray);
+				var stringArray = str2ab(command);
+				return characteristic.writeValueWithoutResponse(stringArray);
 			}).catch(error => {
 			   logError(error); 
 		}	
