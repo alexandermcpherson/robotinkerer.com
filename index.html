@@ -99,6 +99,10 @@
 
 		function sendCommand() {
 			navigator.bluetooth.requestDevice({
+				filters: [{
+			    name: bluetoothName,
+			    services: [bluetoothUUIDservice]
+			  }]
 		  	})
 		  	.then(server => {
 			  	return server.getPrimaryService(bluetoothUUIDservice);
