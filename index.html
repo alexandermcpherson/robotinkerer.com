@@ -85,7 +85,7 @@
 			  	return service.getCharacteristic(bluetoothUUIDcharacteristic);
 			})
 			.then(characteristic => {
-				characteristic = characteristic;
+				characteristic.addEventListener('characteristicvaluechanged', sendCommand);
 			})
 			.catch(error => {
 			    logError(error);
@@ -100,10 +100,10 @@
 			sendCommand();
 		});
 
-		function sendCommand() {
+		function sendCommand(event) {
 			var stringArray = str2ab(command);
 			logCommand(command);
-			characteristic.writeValueWithoutResponse(stringArray);
+			event.writeValueWithoutResponse(stringArray);
 		}
 
 		function logCommand(command) {
