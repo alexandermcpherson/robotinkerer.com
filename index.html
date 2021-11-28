@@ -67,7 +67,7 @@
 		var bt;	// Bluetooth promise object
 		
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
-		  	bt = navigator.bluetooth;.requestDevice({
+		  	bt = navigator.bluetooth.requestDevice({
 		    filters: [{
 			    name: bluetoothName,
 			    services: [bluetoothUUIDservice]
