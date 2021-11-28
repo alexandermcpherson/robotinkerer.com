@@ -64,7 +64,7 @@
 		const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
 
 		var command = "";
-		var bt;	
+		var bt;	// Bluetooth promise object
 		
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
 		  	bt = navigator.bluetooth.requestDevice({
@@ -84,14 +84,29 @@
 				.then(service => {
 				  	return service.getCharacteristic(bluetoothUUIDcharacteristic);
 				})
-			  	.then(characteristic => {
-					var stringArray = str2ab(command);
-					return characteristic.writeValueWithoutResponse(stringArray);
-				})
+			 //  	.then(characteristic => {
+				// 	var stringArray = str2ab(command);
+				// 	return characteristic.writeValueWithoutResponse(stringArray);
+				// })
 			  .catch(error => {
 			    console.log('Argh! ' + error);
 		  });
 		});
+
+		document.getElementById("sendSpeechCommandBtn").addEventListener('click', function() {
+			sendCommand();
+		});
+
+		document.getElementById("sendActionCommandBtn").addEventListener('click', function() {
+			sendCommand();
+		});
+
+		function sendCommand() {
+			bt.then(characteristic => {
+					var stringArray = str2ab(command);
+					return characteristic.writeValueWithoutResponse(stringArray);
+			})
+		}
 
 		function getspeechCommand() {
 			const commandSelection = document.getElementById("speech-commands")
