@@ -42,6 +42,8 @@
 		</select>
 		<br>
 		<p id="speechCommandSelection">You selected: Sarah Connor</p>
+		<br>
+		<button id="sendSpeechCommandBtn">Send</button>
 		<label for="movement-commands">Choose Movement command:</label><br>
 		<select id="movement-commands" name="movement-commands" onchange="getMovementCommand()">
 			<option value="activate" selected="selected">Activate T800</option>
@@ -54,6 +56,8 @@
 		</select>
 		<br>
 		<p id="movementCommandSelection">You selected: Activate T800</p>
+		<br>
+		<button id="sendActionCommandBtn">Send</button>
 	</body>
 	<script>
 
@@ -61,10 +65,11 @@
 		const bluetoothUUIDservice = '0000ffe0-0000-1000-8000-00805f9b34fb';
 		const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
 
-		var command = "";	
+		var command = "";
+		var bt;	
 		
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
-		  	navigator.bluetooth.requestDevice({
+		  	bt = navigator.bluetooth.requestDevice({
 			    filters: [{
 				    name: bluetoothName,
 				    services: [bluetoothUUIDservice]
@@ -82,7 +87,6 @@
 				  	return service.getCharacteristic(bluetoothUUIDcharacteristic);
 				})
 			  	.then(characteristic => {
-					// const epicMode1 = "epic_mode_1";
 					var stringArray = str2ab(command);
 					return characteristic.writeValueWithoutResponse(stringArray);
 				})
