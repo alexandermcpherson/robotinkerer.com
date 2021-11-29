@@ -5,7 +5,7 @@
 		<title>T800-Controller</title>
 	</head>
 	<body>
-		<button id="discoverBluetoothBtn">Discover T800 Device</button>
+		<button id="discoverBluetoothBtn">Discover T800 Device</button><button id="diconnectBluetoothBtn">Disconnect</button>
 		<br><br>
 		<label for="speech-commands">Choose Speech command:</label><br>
 		<select id="speech-commands" name="speech-commands" onchange="getSpeechCommand()">
@@ -64,9 +64,11 @@
 		const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
 
 		var command = "";
+		var bluetoothDevice;
 		var myCharacteristic;
 		
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
+			bluetoothDevice = null;
 		  	navigator.bluetooth.requestDevice({
 		    filters: [{
 			    name: bluetoothName,
@@ -74,9 +76,11 @@
 			  }]
 		  	})
 		  	.then(device => {
+		  		bluetoothDevice = device;
+    			bluetoothDevice.addEventListener('gattserverdisconnected', onDisconnected);
 		    	console.log('> Requested ' + device.name + ' (' + device.id + ')');
 			    // Attempts to connect to remote GATT Server.
-	  			return device.gatt.connect();
+	  			return connect();
 		  	})
 		  	.then(server => {
 			  	return server.getPrimaryService(bluetoothUUIDservice);
@@ -85,11 +89,15 @@
 			  	return service.getCharacteristic(bluetoothUUIDcharacteristic);
 			})
 			.then(characteristic => {
-			    myCharacteristic = characteristic;
+			    return sendCommand();
 			 })
 			.catch(error => {
 			    logError(error);
 	  		});
+		});
+
+		document.getElementById("diconnectBluetoothBtn").addEventListener('click', function() {
+			disconnect();
 		});
 
 		document.getElementById("sendSpeechCommandBtn").addEventListener('click', function() {
@@ -100,10 +108,38 @@
 			sendCommand();
 		});
 
+		function connect() {
+		  console.log('Connecting to Bluetooth Device...');
+		  return bluetoothDevice.gatt.connect()
+		  .then(server => {
+		    console.log('> Bluetooth Device connected');
+		  });
+		}
+
+		function disconnect() {
+		  if (!bluetoothDevice) {
+		    return;
+		  }
+		  console.log('Disconnecting from Bluetooth Device...');
+		  if (bluetoothDevice.gatt.connected) {
+		    bluetoothDevice.gatt.disconnect();
+		  } else {
+		    console.log('> Bluetooth Device is already disconnected');
+		  }
+		}
+
+		function onDisconnected(event) {
+		  // Object event.target is Bluetooth Device getting disconnected.
+		  console.log('> Bluetooth Device disconnected');
+		}
+
 		function sendCommand() {
 			logCommand(command);
-			var stringArray = stringToUint(command);
-			myCharacteristic.writeValueWithoutResponse(stringArray);
+			var stringArray = str2ab(command);
+			return writeValueWithoutResponse(stringArray)
+			.catch(error => {
+			    logError(error);
+	  		});
 		}
 
 		function logCommand(command) {
@@ -124,16 +160,6 @@
 			const commandSelection = document.getElementById("movement-commands")
 		  	command = commandSelection.value
 		  	document.getElementById("movementCommandSelection").innerHTML = "You selected: " + commandSelection.options[commandSelection.selectedIndex].text;
-		}
-
-		function stringToUint(string) {
-		    var string = btoa(unescape(encodeURIComponent(string))),
-		        charList = string.split(''),
-		        uintArray = [];
-		    for (var i = 0; i < charList.length; i++) {
-		        uintArray.push(charList[i].charCodeAt(0));
-		    }
-		    return new Uint8Array(uintArray);
 		}
 
 		function str2ab(str) {
