@@ -95,6 +95,47 @@
 			.catch(error => {
 			    logError(error);
 	  		});
+
+			function connect() {
+			  console.log('Connecting to Bluetooth Device...');
+			  return bluetoothDevice.gatt.connect()
+			  .then(server => {
+			    console.log('> Bluetooth Device connected');
+			  });
+			}
+
+			function disconnect() {
+			  if (!bluetoothDevice) {
+			    return;
+			  }
+			  console.log('Disconnecting from Bluetooth Device...');
+			  if (bluetoothDevice.gatt.connected) {
+			    bluetoothDevice.gatt.disconnect();
+			  } else {
+			    console.log('> Bluetooth Device is already disconnected');
+			  }
+			}
+
+			function onDisconnected(event) {
+			  // Object event.target is Bluetooth Device getting disconnected.
+			  console.log('> Bluetooth Device disconnected');
+			}
+
+			function reconnect() {
+			  if (!bluetoothDevice) {
+			    return;
+			  }
+			  if (bluetoothDevice.gatt.connected) {
+			    console.log('> Bluetooth Device is already connected');
+			    return;
+			  }
+			  connect()
+			  .catch(error => {
+			    console.log('Argh! ' + error);
+			  });
+			}
+
+
 		});
 
 		document.getElementById("diconnectBluetoothBtn").addEventListener('click', function() {
@@ -113,44 +154,6 @@
 			sendCommand();
 		});
 
-		function connect() {
-		  console.log('Connecting to Bluetooth Device...');
-		  return bluetoothDevice.gatt.connect()
-		  .then(server => {
-		    console.log('> Bluetooth Device connected');
-		  });
-		}
-
-		function disconnect() {
-		  if (!bluetoothDevice) {
-		    return;
-		  }
-		  console.log('Disconnecting from Bluetooth Device...');
-		  if (bluetoothDevice.gatt.connected) {
-		    bluetoothDevice.gatt.disconnect();
-		  } else {
-		    console.log('> Bluetooth Device is already disconnected');
-		  }
-		}
-
-		function onDisconnected(event) {
-		  // Object event.target is Bluetooth Device getting disconnected.
-		  console.log('> Bluetooth Device disconnected');
-		}
-
-		function reconnect() {
-		  if (!bluetoothDevice) {
-		    return;
-		  }
-		  if (bluetoothDevice.gatt.connected) {
-		    console.log('> Bluetooth Device is already connected');
-		    return;
-		  }
-		  connect()
-		  .catch(error => {
-		    console.log('Argh! ' + error);
-		  });
-		}
 
 		function sendCommand() {
 			logCommand(command);
