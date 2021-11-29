@@ -98,12 +98,12 @@
 
 
 	  		document.getElementById("diconnectBluetoothBtn").addEventListener('click', function() {
-			disconnect();
-		});
+				disconnect();
+			});
 
-		document.getElementById("reconnectBluetoothBtn").addEventListener('click', function() {
-			reconnect();
-		});
+			document.getElementById("reconnectBluetoothBtn").addEventListener('click', function() {
+				reconnect();
+			});
 
 			function connect() {
 			  console.log('Connecting to Bluetooth Device...');
@@ -144,27 +144,28 @@
 			  });
 			}
 
+			document.getElementById("sendSpeechCommandBtn").addEventListener('click', function() {
+				sendCommand();
+			});
+
+			document.getElementById("sendActionCommandBtn").addEventListener('click', function() {
+				sendCommand();
+			});
+
+
+			function sendCommand() {
+				logCommand(command);
+				var stringArray = str2ab(command);
+				myCharateristic.writeValueWithoutResponse(stringArray);
+			}
+
+			function logCommand(command) {
+				console.log('Seinding command: ' + command);
+			}	
+
 
 		});
 
-		document.getElementById("sendSpeechCommandBtn").addEventListener('click', function() {
-			sendCommand();
-		});
-
-		document.getElementById("sendActionCommandBtn").addEventListener('click', function() {
-			sendCommand();
-		});
-
-
-		function sendCommand() {
-			logCommand(command);
-			var stringArray = str2ab(command);
-			myCharateristic.writeValueWithoutResponse(stringArray);
-		}
-
-		function logCommand(command) {
-			console.log('Seinding command: ' + command);
-		}	
 
 		function logError(error) {
 			console.log('Error: ' + error);
