@@ -102,7 +102,7 @@
 
 		function sendCommand() {
 			logCommand(command);
-			var stringArray = str2ab(command);
+			var stringArray = stringToUint(command);
 			myCharacteristic.writeValueWithoutResponse(stringArray);
 		}
 
@@ -124,6 +124,16 @@
 			const commandSelection = document.getElementById("movement-commands")
 		  	command = commandSelection.value
 		  	document.getElementById("movementCommandSelection").innerHTML = "You selected: " + commandSelection.options[commandSelection.selectedIndex].text;
+		}
+
+		function stringToUint(string) {
+		    var string = btoa(unescape(encodeURIComponent(string))),
+		        charList = string.split(''),
+		        uintArray = [];
+		    for (var i = 0; i < charList.length; i++) {
+		        uintArray.push(charList[i].charCodeAt(0));
+		    }
+		    return new Uint8Array(uintArray);
 		}
 
 		function str2ab(str) {
