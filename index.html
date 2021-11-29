@@ -103,7 +103,7 @@
 		function sendCommand() {
 			logCommand(command);
 			var stringArray = str2ab(command);
-			await myCharacteristic.writeValueWithoutResponse(stringArray);
+			myCharacteristic.writeValueWithoutResponse(stringArray);
 		}
 
 		function logCommand(command) {
