@@ -65,6 +65,7 @@
 
 		var command = "";
 		var bluetoothDevice;
+		var myCharateristic;
 		
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
 			bluetoothDevice = null;
@@ -88,6 +89,7 @@
 			  	return service.getCharacteristic(bluetoothUUIDcharacteristic);
 			})
 			.then(characteristic => {
+				myCharateristic = characteristic;
 			    return sendCommand();
 			 })
 			.catch(error => {
@@ -135,7 +137,7 @@
 		function sendCommand() {
 			logCommand(command);
 			var stringArray = str2ab(command);
-			return writeValueWithoutResponse(stringArray)
+			return myCharateristic.writeValueWithoutResponse(stringArray)
 			.catch(error => {
 			    logError(error);
 	  		});
