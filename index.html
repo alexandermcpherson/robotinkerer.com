@@ -153,8 +153,10 @@
 
 		function sendCommand() {
 			logCommand(command);
-			var stringArray = str2ab(command);
-			myCharateristic.writeValueWithoutResponse(stringArray);
+			// var stringArray = str2ab(command);
+			const encoder = new TextEncoder('utf-8');
+  			const userDescription = encoder.encode(command);
+			myCharateristic.writeValueWithoutResponse(userDescription);
 		}
 
 		function logCommand(command) {
