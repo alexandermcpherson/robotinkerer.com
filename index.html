@@ -90,7 +90,7 @@
 			})
 			.then(characteristic => {
 				var stringArray = str2ab(command);
-				return characteristic.writeValueWithoutResponse(stringArray)
+				return characteristic.writeValueWithoutResponse(stringArray);
 				// return sendCommand();
 			 })
 			.catch(error => {
