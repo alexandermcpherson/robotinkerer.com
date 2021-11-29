@@ -77,7 +77,7 @@
 		  	})
 		  	.then(device => {
 		  		bluetoothDevice = device;
-    			bluetoothDevice.addEventListener('gattserverdisconnected', onDisconnected);
+    			// bluetoothDevice.addEventListener('gattserverdisconnected', onDisconnected);
 		    	console.log('> Requested ' + device.name + ' (' + device.id + ')');
 			    // Attempts to connect to remote GATT Server.
 	  			return connect();
@@ -117,9 +117,9 @@
 		function connect() {
 		  console.log('Connecting to Bluetooth Device...');
 		  return bluetoothDevice.gatt.connect()
-		  .then(server => {
-		    console.log('> Bluetooth Device connected');
-		  });
+		  // .then(server => {
+		  //   console.log('> Bluetooth Device connected');
+		  // });
 		}
 
 		function disconnect() {
