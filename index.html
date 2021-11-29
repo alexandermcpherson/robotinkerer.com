@@ -154,7 +154,7 @@
 		function sendCommand() {
 			logCommand(command);
 			var stringArray = str2ab(command);
-			return myCharateristic.writeValueWithoutResponse(stringArray)
+			return myCharateristic.writeValueWithoutResponse(stringArray);
 			.then(server => {
 			    console.log('> Bluetooth sending command');
 			 });
