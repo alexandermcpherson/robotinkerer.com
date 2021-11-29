@@ -80,7 +80,7 @@
     		// 	bluetoothDevice.addEventListener('gattserverdisconnected', onDisconnected);
 		    	console.log('> Requested ' + device.name + ' (' + device.id + ')');
 			    // Attempts to connect to remote GATT Server.
-	  			return connect();
+	  			return bluetoothDevice.gatt.connect()
 		  	})
 		  	.then(server => {
 			  	return server.getPrimaryService(bluetoothUUIDservice);
