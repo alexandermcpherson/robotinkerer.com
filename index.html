@@ -68,7 +68,7 @@
 		var myCharateristic;
 		
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
-			// bluetoothDevice = null;
+			bluetoothDevice = null;
 		  	navigator.bluetooth.requestDevice({
 		    filters: [{
 			    name: bluetoothName,
@@ -76,11 +76,11 @@
 			  }]
 		  	})
 		  	.then(device => {
-		  		// bluetoothDevice = device;
+		  		bluetoothDevice = device;
     		// 	bluetoothDevice.addEventListener('gattserverdisconnected', onDisconnected);
 		    	console.log('> Requested ' + device.name + ' (' + device.id + ')');
 			    // Attempts to connect to remote GATT Server.
-	  			return device.gatt.connect();
+	  			return connect();
 		  	})
 		  	.then(server => {
 			  	return server.getPrimaryService(bluetoothUUIDservice);
