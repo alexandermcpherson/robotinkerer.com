@@ -104,9 +104,6 @@
 			logCommand('Sending command: ' + command);
 			var stringArray = str2ab(command);
 			myCharacteristic.writeValueWithoutResponse(stringArray);
-			.catch(error => {
-			   console.log('Argh! ' + error);
-			});
 		}
 
 		function logCommand(command) {
