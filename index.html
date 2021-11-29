@@ -90,7 +90,6 @@
 			})
 			.then(characteristic => {
 				myCharateristic = characteristic;
-			    return sendCommand();
 			 })
 			.catch(error => {
 			    logError(error);
@@ -137,10 +136,7 @@
 		function sendCommand() {
 			logCommand(command);
 			var stringArray = str2ab(command);
-			return myCharateristic.writeValueWithoutResponse(stringArray)
-			.catch(error => {
-			    logError(error);
-	  		});
+			myCharateristic.writeValueWithoutResponse(stringArray);
 		}
 
 		function logCommand(command) {
