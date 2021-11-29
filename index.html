@@ -65,8 +65,10 @@
 
 		var command = "";
 		var myCharateristic;
+		var bluetoothDevice;
 		
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
+			bluetoothDevice = null;
 		  	navigator.bluetooth.requestDevice({
 		    filters: [{
 			    name: bluetoothName,
@@ -74,6 +76,7 @@
 			  }]
 		  	})
 		  	.then(device => {
+		  		bluetoothDevice = device;
 		    	console.log('> Requested ' + device.name + ' (' + device.id + ')');
 			    // Attempts to connect to remote GATT Server.
 	  			return device.gatt.connect()
