@@ -78,8 +78,9 @@
 		  	.then(device => {
 		  		bluetoothDevice = device;
 		    	console.log('> Requested ' + device.name + ' (' + device.id + ')');
+			    bluetoothDevice.addEventListener('gattserverdisconnected', onDisconnected);
 			    // Attempts to connect to remote GATT Server.
-	  			return device.gatt.connect()
+	  			return connect();
 		  	})
 		  	.then(server => {
 			  	return server.getPrimaryService(bluetoothUUIDservice);
@@ -153,10 +154,9 @@
 
 		function sendCommand() {
 			logCommand(command);
-			// var stringArray = str2ab(command);
 			const encoder = new TextEncoder('utf-8');
-  			const userDescription = encoder.encode(command);
-			myCharateristic.writeValueWithoutResponse(userDescription);
+  			const commandToSend = encoder.encode(command);
+			myCharateristic.writeValueWithoutResponse(commandToSend);
 		}
 
 		function logCommand(command) {
@@ -177,15 +177,6 @@
 			const commandSelection = document.getElementById("movement-commands")
 		  	command = commandSelection.value
 		  	document.getElementById("movementCommandSelection").innerHTML = "You selected: " + commandSelection.options[commandSelection.selectedIndex].text;
-		}
-
-		function str2ab(str) {
-		  var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
-		  var bufView = new Uint8Array(buf);
-		  for (var i=0, strLen=str.length; i < strLen; i++) {
-		    bufView[i] = str.charCodeAt(i);
-		  }
-		  return buf;
 		}
 	</script>
 </html>
