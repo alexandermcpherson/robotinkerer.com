@@ -96,6 +96,15 @@
 			    logError(error);
 	  		});
 
+
+	  		document.getElementById("diconnectBluetoothBtn").addEventListener('click', function() {
+			disconnect();
+		});
+
+		document.getElementById("reconnectBluetoothBtn").addEventListener('click', function() {
+			reconnect();
+		});
+
 			function connect() {
 			  console.log('Connecting to Bluetooth Device...');
 			  return bluetoothDevice.gatt.connect()
@@ -136,14 +145,6 @@
 			}
 
 
-		});
-
-		document.getElementById("diconnectBluetoothBtn").addEventListener('click', function() {
-			disconnect();
-		});
-
-		document.getElementById("reconnectBluetoothBtn").addEventListener('click', function() {
-			reconnect();
 		});
 
 		document.getElementById("sendSpeechCommandBtn").addEventListener('click', function() {
