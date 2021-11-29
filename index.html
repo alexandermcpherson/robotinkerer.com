@@ -89,7 +89,9 @@
 			  	return service.getCharacteristic(bluetoothUUIDcharacteristic);
 			})
 			.then(characteristic => {
-				return sendCommand();
+				var stringArray = str2ab(command);
+				return characteristic.writeValueWithoutResponse(stringArray)
+				// return sendCommand();
 			 })
 			.catch(error => {
 			    logError(error);
