@@ -142,19 +142,19 @@
 		    return;
 		  }
 		  if (bluetoothDevice.gatt.connected) {
-		    log('> Bluetooth Device is already connected');
+		    console.log('> Bluetooth Device is already connected');
 		    return;
 		  }
 		  connect()
 		  .catch(error => {
-		    log('Argh! ' + error);
+		    console.log('Argh! ' + error);
 		  });
 		}
 
 		function sendCommand() {
 			logCommand(command);
 			var stringArray = str2ab(command);
-			myCharateristic.writeValueWithoutResponse(stringArray);
+			return myCharateristic.writeValueWithoutResponse(stringArray);
 		}
 
 		function logCommand(command) {
