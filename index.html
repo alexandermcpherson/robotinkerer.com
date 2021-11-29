@@ -68,7 +68,7 @@
 		var bluetoothDevice;
 		
 		document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
-			// bluetoothDevice = null;
+			bluetoothDevice = null;
 		  	navigator.bluetooth.requestDevice({
 		    filters: [{
 			    name: bluetoothName,
@@ -80,7 +80,7 @@
 		    	console.log('> Requested ' + device.name + ' (' + device.id + ')');
 			    bluetoothDevice.addEventListener('gattserverdisconnected', onDisconnected);
 			    // Attempts to connect to remote GATT Server.
-	  			return connect();
+	  			return device.gatt.connect();
 		  	})
 		  	.then(server => {
 			  	return server.getPrimaryService(bluetoothUUIDservice);
