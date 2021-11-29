@@ -101,13 +101,13 @@
 		});
 
 		function sendCommand() {
-			logCommand('Sending command: ' + command);
+			logCommand(command);
 			var stringArray = str2ab(command);
-			myCharacteristic.writeValueWithoutResponse(stringArray);
+			await myCharacteristic.writeValueWithoutResponse(stringArray);
 		}
 
 		function logCommand(command) {
-			console.log('Command' + command);
+			console.log('Seinding command: ' + command);
 		}	
 
 		function logError(error) {
