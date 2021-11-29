@@ -5,7 +5,7 @@
 		<title>T800-Controller</title>
 	</head>
 	<body>
-		<button id="discoverBluetoothBtn">Discover T800 Device</button><button id="diconnectBluetoothBtn">Disconnect</button>
+		<button id="discoverBluetoothBtn">Discover T800 Device</button><button id="diconnectBluetoothBtn">Disconnect</button><button id="reconnectBluetoothBtn">Reconnect</button>
 		<br><br>
 		<label for="speech-commands">Choose Speech command:</label><br>
 		<select id="speech-commands" name="speech-commands" onchange="getSpeechCommand()">
@@ -100,6 +100,10 @@
 			disconnect();
 		});
 
+		document.getElementById("reconnectBluetoothBtn").addEventListener('click', function() {
+			reconnect();
+		});
+
 		document.getElementById("sendSpeechCommandBtn").addEventListener('click', function() {
 			sendCommand();
 		});
@@ -131,6 +135,20 @@
 		function onDisconnected(event) {
 		  // Object event.target is Bluetooth Device getting disconnected.
 		  console.log('> Bluetooth Device disconnected');
+		}
+
+		function reconnect() {
+		  if (!bluetoothDevice) {
+		    return;
+		  }
+		  if (bluetoothDevice.gatt.connected) {
+		    log('> Bluetooth Device is already connected');
+		    return;
+		  }
+		  connect()
+		  .catch(error => {
+		    log('Argh! ' + error);
+		  });
 		}
 
 		function sendCommand() {
