@@ -24,4 +24,8 @@
   cursor: pointer;
 }
 
+.wide_button {
+  padding: 40px;
+}
+
 .button_corners {border-radius: 8px;}
