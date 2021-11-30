@@ -10,20 +10,12 @@
   cursor: pointer;
 }
 
-.blue_button {
-  background-color: darkblue;
-}
+.blue_button {background-color: darkblue;}
 
-.red_button {
-  background-color: red;
-}
+.red_button {background-color: red;}
 
-.bluetooth_button {
-  background-color: lightblue;
-}
+.bluetooth_button {background-color: lightblue;}
 
-.wide_button {
-  width: 125px;
-}
+.wide_button {width: 125px;}
 
 .button_corners {border-radius: 8px;}
