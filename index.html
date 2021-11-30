@@ -6,15 +6,15 @@
 		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
-		<button id="discoverBluetoothBtn">Discover T800 Device</button><button id="diconnectBluetoothBtn">Disconnect</button><button id="reconnectBluetoothBtn">Reconnect</button>
+		<button id="discoverBluetoothBtn" class="button blue_button button_corners">Discover T800 Device</button><button id="diconnectBluetoothBtn" class="button blue_button button_corners">Disconnect</button><button id="reconnectBluetoothBtn" class="button blue_button button_corners">Reconnect</button>
 		<br><br>
 		<h1>Lights</h1>
 		<h2>Toggle Leds</h2>
-		<button id="redLed1" class="button red_button button_corners">Off</button><button id="redLed2" class="button red_button button_corners">Off</button><br>
-		<button id="blueLed1" class="button blue_button button_corners">Off</button><button id="blueLed2" class="button blue_button button_corners">Off</button><br>
-		<button id="addRedLed" class="button red_button button_corners wide_button">All Red Off</button><br>
-		<button id="allBlueLed" class="button blue_button button_corners wide_button">All Blue Off</button><br>
-		<button id="eyeLeds" class="button red_button button_corners wide_button">Eyes Off</button><br>
+		<button id="redLed1Btn" class="button red_button button_corners">Off</button><button id="redLed2Btn" class="button red_button button_corners">Off</button><br>
+		<button id="blueLed1Btn" class="button blue_button button_corners">Off</button><button id="blueLed2Btn" class="button blue_button button_corners">Off</button><br>
+		<button id="addRedLedBtn" class="button red_button button_corners wide_button">All Red Off</button><br>
+		<button id="allBlueLedBtn" class="button blue_button button_corners wide_button">All Blue Off</button><br>
+		<button id="eyeLedsBtn" class="button red_button button_corners wide_button">Eyes Off</button><br>
 
 		<h1>Sounds</h1>
 		<h1>Actions</h1>
@@ -75,7 +75,8 @@
 		const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
 
 		var speechCommand = "sc";
-		var movementCommand = "activate"; 
+		var movementCommand = "activate";
+		var ledCommand;
 		var myCharateristic;
 		var bluetoothDevice;
 		
@@ -109,13 +110,7 @@
 
 		});
 
-		document.getElementById("sendSpeechCommandBtn").addEventListener('click', function() {
-			sendSpeechCommand();
-		});
-
-		document.getElementById("sendActionCommandBtn").addEventListener('click', function() {
-			sendMovementCommand();
-		});
+		// BLUETOOTH CONNECTIONS
 
 		document.getElementById("diconnectBluetoothBtn").addEventListener('click', function() {
 			disconnect();
@@ -123,6 +118,48 @@
 
 		document.getElementById("reconnectBluetoothBtn").addEventListener('click', function() {
 			reconnect();
+		});
+
+		// LEDS
+
+		document.getElementById("redLed1Btn").addEventListener('click', function() {
+			sendLedCommand("red_led_1_on");
+		});
+
+		document.getElementById("redLed2Btn").addEventListener('click', function() {
+			sendLedCommand("red_led_2_on");
+		});
+
+		document.getElementById("blueLed1Btn").addEventListener('click', function() {
+			sendLedCommand("blue_led_1_on");
+		});
+
+		document.getElementById("blueLed2Btn").addEventListener('click', function() {
+			sendLedCommand("blue_led_2_on");
+		});
+
+		document.getElementById("allBlueLedBtn").addEventListener('click', function() {
+			sendLedCommand("blue_led_on");
+		});
+
+		document.getElementById("allRedLedBtn").addEventListener('click', function() {
+			sendLedCommand("red_led_on");
+		});
+
+		document.getElementById("eyeLedsdBtn").addEventListener('click', function() {
+			sendLedCommand("eyes_on");
+		});
+
+		// ACTION SPEECH
+
+		document.getElementById("sendSpeechCommandBtn").addEventListener('click', function() {
+			sendSpeechCommand();
+		});
+
+		// ACTION MOVEMENT
+
+		document.getElementById("sendActionCommandBtn").addEventListener('click', function() {
+			sendMovementCommand();
 		});
 
 		function connect() {
@@ -162,6 +199,13 @@
 		  .catch(error => {
 		    console.log('Argh! ' + error);
 		  });
+		}
+
+		function sendledCommand(ledCommand) {
+			logCommand(speechCommand);
+			const encoder = new TextEncoder('utf-8');
+  			const commandToSend = encoder.encode(speechCommand);
+			myCharateristic.writeValueWithoutResponse(commandToSend);
 		}
 
 		function sendSpeechCommand() {

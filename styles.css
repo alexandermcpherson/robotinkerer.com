@@ -18,6 +18,10 @@
   background-color: red;
 }
 
+.bluetooth_button {
+  background-color: lightblue;
+}
+
 .wide_button {
   width: 125px;
 }
