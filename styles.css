@@ -14,7 +14,9 @@
 
 .red_button {background-color: red;}
 
-.bluetooth_button .action_button {background-color: #0090cb;}
+.bluetooth_button  {background-color: #0090cb;}
+
+.action_button {background-color: #0090cb;}
 
 .wide_button {width: 125px;}
 
