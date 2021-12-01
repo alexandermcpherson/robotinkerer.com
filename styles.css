@@ -1,3 +1,25 @@
+body {
+    font-family: 'Terminator Real NFI', sans-serif;
+    margin-top: 20px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding:0;
+    text-align:center;
+}
+
+#gray-bg {
+  background-color: lightgray;
+}
+
+#white-bg {
+  background-color: white;
+}
+
+.section-padding {
+  padding: 25px 0px 50px 0px;
+}
+
 .button {
   border: none;
   color: white;
@@ -14,6 +36,16 @@
 
 .red_button {background-color: red;}
 
+.plasma_button {
+  background-color: purple;
+  padding: 20px 26px 20px 26px;
+}
+
+.sound_button {
+  background-color: gray;
+  padding: 20px 26px 20px 26px;
+}
+
 .bluetooth_button  {background-color: #0090cb;}
 
 .action_button {background-color: #0090cb;}
@@ -21,3 +53,11 @@
 .wide_button {width: 125px;}
 
 .button_corners {border-radius: 8px;}
+
+.h-padding-bottom {
+  padding-bottom: 25px;
+}
+
+.dpad-label {
+  padding-bottom: 100px;
+}

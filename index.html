@@ -3,71 +3,111 @@
 <html>
 	<head>
 		<title>T800-Controller</title>
+		<link href="http://fonts.cdnfonts.com/css/terminator-real-nfi-2" rel="stylesheet">
 		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="dpad.css">
 	</head>
 	<body>
-		<button id="discoverBluetoothBtn" class="button bluetooth_button button_corners">Discover T800 Device</button><button id="diconnectBluetoothBtn" class="button bluetooth_button button_corners">Disconnect</button><button id="reconnectBluetoothBtn" class="button bluetooth_button button_corners">Reconnect</button>
+		<h1><u>T800 Controller</u></h1><br>
+		<h1>Connection</h1>
+		<button id="discoverBluetoothBtn" class="button bluetooth_button button_corners">Connect</button><button id="diconnectBluetoothBtn" class="button bluetooth_button button_corners">Disconnect</button><button id="reconnectBluetoothBtn" class="button bluetooth_button button_corners">Reconnect</button>
 		<br><br>
-		<h1>Lights</h1>
-		<h2>Toggle Leds</h2>
-		<button id="redLed1Btn" class="button red_button button_corners">Off</button><button id="redLed2Btn" class="button red_button button_corners">Off</button><br>
-		<button id="blueLed1Btn" class="button blue_button button_corners">Off</button><button id="blueLed2Btn" class="button blue_button button_corners">Off</button><br>
-		<button id="addRedLedBtn" class="button red_button button_corners wide_button">All Red Off</button><br>
-		<button id="allBlueLedBtn" class="button blue_button button_corners wide_button">All Blue Off</button><br>
-		<button id="eyeLedsBtn" class="button red_button button_corners wide_button">Eyes Off</button><br>
-
-		<h1>Sounds</h1>
-		<h1>Actions</h1>
-		<label for="speech-commands">Choose Speech command:</label><br>
-		<select id="speech-commands" name="speech-commands" onchange="getSpeechCommand()">
-			<optgroup label = "T1">
-				<option value="sc" selected="selected">Sarah Connor</option>
-				<option value="fya">Fuck you asshole</option>
-				<option value="ibb">Ill be back</option>
-				<option value="ycgttmn">Your clothes give them to me now</option>
-			  	<option value="ncr">Nothing clean right</option>
-				<option value="45lswls">45 Long Slide with Lazer sighting</option>
-				<option value="go">Get out</option>				
-			  	<option value="u9">Uzi 9mm</option>
-		  	</optgroup>
-		  	<optgroup label = "T2">
-		  		<option value="alvb">Asta La Vista Baby</option>
-				<option value="np">No problemo</option>
-				<option value="ibb">Ill be back</option>
-				<option value="tm">Trust me</option>
-			  	<option value="ltmvc">Listen to me very carefully</option>
-				<option value="iaat">I am a Terminator</option>
-				<option value="csm1">Cyberdyne systems Model 101</option>				
-			  	<option value="inycybaym">I need your clothes your boots and your motorcycle</option>
-				<option value="toommp">Thats one of my mission parameters</option>
-				<option value="iknwyc">I now know why you cry</option>
-				<option value="hl">He'll live</option>
-			  	<option value="cd">Chillout dickwad</option>
-				<option value="4cwmiywtl">Come with me if you want to live</option>
-		  	</optgroup>
-		  	<optgroup label = "T3">
-		  		<option value="iaam">I am a machine</option>
-				<option value="yat">You are Terminated</option>
-				<option value="ddt">Don't do that</option>
-			</optgroup> 
-		</select>
-		<p id="speechCommandSelection">You selected: Sarah Connor</p>
-		<button id="sendSpeechCommandBtn" class="button action_button wide_button button_corners">Send</button>
-		<br><br>
-		<label for="movement-commands">Choose Movement command:</label><br>
-		<select id="movement-commands" name="movement-commands" onchange="getMovementCommand()">
-			<option value="activate" selected="selected">Activate T800</option>
-			<option value="deactivate">Deactivate T800</option>
-			<option value="randomHeadlr">Random Head left to right</option>
-			<option value="randomHeadud">Random Head up and down</option>
-			<option value="randomHeadfr">Random Head full range</option>				
-		  	<option value="epic_mode_1">T1 Epic Mode</option>
-		  	<option value="epic_mode_2">T2 Epic Mode</option>
-		</select>
-		<br>
-		<p id="movementCommandSelection">You selected: Activate T800</p>
-		<button id="sendActionCommandBtn" class="button action_button wide_button button_corners">Send</button>
+		<div id="gray-bg" class="section-padding">
+			<h1 class="h-padding-bottom"><u>Lights</u></h1>
+			<h2>Toggle Leds</h2>
+				<button id="redLed1Btn" class="button red_button button_corners toggler">Off</button><button id="redLed2Btn" class="button red_button button_corners">Off</button><br>
+				<button id="blueLed1Btn" class="button blue_button button_corners">Off</button><button id="blueLed2Btn" class="button blue_button button_corners">Off</button><br>
+				<button id="allRedLedBtn" class="button red_button button_corners wide_button">All Red Off</button><br>
+				<button id="allBlueLedBtn" class="button blue_button button_corners wide_button">All Blue Off</button><br>
+				<button id="eyeLedsBtn" class="button red_button button_corners wide_button">Eyes Off</button><br>
+			<h2>Toggle Plasma</h2>
+				<button id="plasmaLed1Btn" class="button plasma_button button_corners">1</button><button id="plasmaLed2Btn" class="button plasma_button button_corners">2</button><br>
+				<button id="plasmaLed3Btn" class="button plasma_button button_corners">1</button><button id="plasmaLed3Btn" class="button plasma_button button_corners">2</button><br>
+				<button id="plasmaRandomLedBtn" class="button plasma_button button_corners wide_button">Random</button><br>
+			</div>
+		<div id="white-bg" class="section-padding">	
+			<h1 class="h-padding-bottom"><u>Sounds</u></h1>
+			<h2>Play Movie Score</h2>
+				<button id="t1Btn" class="button sound_button button_corners">1</button><button id="t2Btn" class="button sound_button button_corners">2</button><br>
+				<button id="t3Btn" class="button sound_button button_corners">3</button><button id="t4Btn" class="button sound_button button_corners">4</button><br>
+				<button id="t5Btn" class="button sound_button button_corners">5</button><button id="tB6tn" class="button sound_button button_corners">6</button><br>
+			<h2>Play Custom Movie Score</h2>
+				<button id="custom1Btn" class="button sound_button button_corners">1</button><button id="custom2Btn" class="button sound_button button_corners">2</button><br>
+				<button id="custom3Btn" class="button sound_button button_corners">3</button><button id="custom4tn" class="button sound_button button_corners">4</button><br>
+		</div>
+		<div id="gray-bg" class="section-padding">
+			<h1 class="h-padding-bottom"><u>Actions</u></h1>
+			<label for="speech-commands">Choose Speech command:</label><br>
+			<select id="speech-commands" name="speech-commands" onchange="getSpeechCommand()">
+				<optgroup label = "T1">
+					<option value="sc" selected="selected">Sarah Connor</option>
+					<option value="fya">Fuck you asshole</option>
+					<option value="ibb">Ill be back</option>
+					<option value="ycgttmn">Your clothes give them to me now</option>
+				  	<option value="ncr">Nothing clean right</option>
+					<option value="45lswls">45 Long Slide with Lazer sighting</option>
+					<option value="go">Get out</option>				
+				  	<option value="u9">Uzi 9mm</option>
+			  	</optgroup>
+			  	<optgroup label = "T2">
+			  		<option value="alvb">Asta La Vista Baby</option>
+					<option value="np">No problemo</option>
+					<option value="ibb">Ill be back</option>
+					<option value="tm">Trust me</option>
+				  	<option value="ltmvc">Listen to me very carefully</option>
+					<option value="iaat">I am a Terminator</option>
+					<option value="csm1">Cyberdyne systems Model 101</option>				
+				  	<option value="inycybaym">I need your clothes your boots and your motorcycle</option>
+					<option value="toommp">Thats one of my mission parameters</option>
+					<option value="iknwyc">I now know why you cry</option>
+					<option value="hl">He'll live</option>
+				  	<option value="cd">Chillout dickwad</option>
+					<option value="4cwmiywtl">Come with me if you want to live</option>
+			  	</optgroup>
+			  	<optgroup label = "T3">
+			  		<option value="iaam">I am a machine</option>
+					<option value="yat">You are Terminated</option>
+					<option value="ddt">Don't do that</option>
+				</optgroup> 
+			</select>
+			<p id="speechCommandSelection">You selected: Sarah Connor</p>
+			<button id="sendSpeechCommandBtn" class="button action_button wide_button button_corners">Send</button>
+			<br><br>
+			<label for="movement-commands">Choose Movement command:</label><br>
+			<select id="movement-commands" name="movement-commands" onchange="getMovementCommand()">
+				<option value="activate" selected="selected">Activate T800</option>
+				<option value="deactivate">Deactivate T800</option>
+				<option value="randomHeadlr">Random Head left to right</option>
+				<option value="randomHeadud">Random Head up and down</option>
+				<option value="randomHeadfr">Random Head full range</option>				
+			  	<option value="epic_mode_1">T1 Epic Mode</option>
+			  	<option value="epic_mode_2">T2 Epic Mode</option>
+			</select>
+			<br>
+			<p id="movementCommandSelection">You selected: Activate T800</p>
+			<button id="sendActionCommandBtn" class="button action_button wide_button button_corners">Send</button>
+		</div>
+		<div id="white-bg" class="section-padding">	
+			<h1 class="h-padding-bottom"><u>D-Pad</u></h1>
+			<p>Head Up & Down & Left & Right<br>Eyes Left & Right<br>Jaw Up & Down</p>
+			<div class="set dark">
+			  <nav class="d-pad">
+			    <a class="up" href="#"></a>
+			    <a class="right" href="#"></a>
+			    <a class="down" href="#"></a>
+			    <a class="left" href="#"></a>  
+			  </nav>
+			  <nav class="o-pad">
+			    <a class="up" href="#"></a>
+			    <a class="right" href="#"></a>
+			    <a class="down" href="#"></a>
+			    <a class="left" href="#"></a>  
+			  </nav>
+			</div>
+		</div>
 	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<scirpt src="dpad.js"></scirpt>
 	<script>
 
 		const bluetoothName = 'DSD TECH';
@@ -77,6 +117,7 @@
 		var speechCommand = "sc";
 		var movementCommand = "activate";
 		var ledCommand;
+		var soundCommand;
 		var myCharateristic;
 		var bluetoothDevice;
 		
@@ -122,32 +163,159 @@
 
 		// LEDS
 
-		document.getElementById("redLed1Btn").addEventListener('click', function() {
-			sendLedCommand("red_led_1_on");
+		$("#redLed1Btn").click( function() {
+		    $me = $(this);
+		    $me.toggleClass('off');
+		    if($me.is(".off")){
+		    	$me.html("On");
+		    	sendLedCommand("red_led_1_on");
+		    }else {
+		        $me.html("Off");
+		        sendLedCommand("red_led_1_off");
+		    }
 		});
 
-		document.getElementById("redLed2Btn").addEventListener('click', function() {
-			sendLedCommand("red_led_2_on");
+		$("#redLed2Btn").click( function() {
+		    $me = $(this);
+		    $me.toggleClass('off');
+		    if($me.is(".off")){
+		    	$me.html("On");
+		    	sendLedCommand("red_led_2_on");
+		    }else {
+		        $me.html("Off");
+		        sendLedCommand("red_led_2_off");
+		    }
 		});
 
-		document.getElementById("blueLed1Btn").addEventListener('click', function() {
-			sendLedCommand("blue_led_1_on");
+		$("#blueLed1Btn").click( function() {
+		    $me = $(this);
+		    $me.toggleClass('off');
+		    if($me.is(".off")){
+		    	$me.html("On");
+		    	sendLedCommand("blue_led_1_on");
+		    }else {
+		        $me.html("Off");
+		        sendLedCommand("blue_led_1_off");
+		    }
 		});
 
-		document.getElementById("blueLed2Btn").addEventListener('click', function() {
-			sendLedCommand("blue_led_2_on");
+		$("#blueLed2Btn").click( function() {
+		    $me = $(this);
+		    $me.toggleClass('off');
+		    if($me.is(".off")){
+		    	$me.html("On");
+		    	sendLedCommand("blue_led_2_on");
+		    }else {
+		        $me.html("Off");
+		        sendLedCommand("blue_led_2_off");
+		    }
 		});
 
-		document.getElementById("allBlueLedBtn").addEventListener('click', function() {
-			sendLedCommand("blue_led_on");
+		$("#allBlueLedBtn").click( function() {
+		    $me = $(this);
+		    $me.toggleClass('off');
+		    if($me.is(".off")){
+		    	$me.html("All Blue On");
+		    	$("#blueLed1Btn").html("On");
+		    	$("#blueLed2Btn").html("On");
+		    	sendLedCommand("blue_led_on");
+		    }else {
+		        $me.html("All Blue Off");
+		        $("#blueLed1Btn").html("Off");
+		    	$("#blueLed2Btn").html("Off");
+		        sendLedCommand("blue_led_off");
+		    }
 		});
 
-		document.getElementById("allRedLedBtn").addEventListener('click', function() {
-			sendLedCommand("red_led_on");
+		$("#allRedLedBtn").click( function() {
+		    $me = $(this);
+		    $me.toggleClass('off');
+		    if($me.is(".off")){
+		    	$me.html("All Red On");
+		    	$("#redLed1Btn").html("On");
+		    	$("#redLed2Btn").html("On");
+		    	sendLedCommand("red_led_on");
+		    }else {
+		        $me.html("All Red Off");
+		        $("#redLed1Btn").html("Off");
+		    	$("#redLed2Btn").html("Off");
+		        sendLedCommand("red_led_off");
+		    }
 		});
 
-		document.getElementById("eyeLedsdBtn").addEventListener('click', function() {
-			sendLedCommand("eyes_on");
+		$("#eyeLedsBtn").click( function() {
+		    $me = $(this);
+		    $me.toggleClass('off');
+		    if($me.is(".off")){
+		    	$me.html("Eyes On");
+		    	sendLedCommand("eyes_on");
+		    }else {
+		        $me.html("Eyes Off");
+		        sendLedCommand("eyes_off");
+		    }
+		});
+
+
+		document.getElementById("plasmaLed1Btn").addEventListener('click', function() {
+			sendLedCommand("plasma1");
+		});
+
+		document.getElementById("plasmaLed2Btn").addEventListener('click', function() {
+			sendLedCommand("plasma2");
+		});
+
+		document.getElementById("plasmaLed3Btn").addEventListener('click', function() {
+			sendLedCommand("plasma3");
+		});
+
+		document.getElementById("plasmaLed4Btn").addEventListener('click', function() {
+			sendLedCommand("plasma4");
+		});
+
+		document.getElementById("plasmaRandomLedBtn").addEventListener('click', function() {
+			sendLedCommand("plasma_random");
+		});
+
+		// SOUNDS
+
+		document.getElementById("t1Btn").addEventListener('click', function() {
+			sendSoundCommand("t1");
+		});
+
+		document.getElementById("t2Btn").addEventListener('click', function() {
+			sendSoundCommand("t2");
+		});
+
+		document.getElementById("t3Btn").addEventListener('click', function() {
+			sendSoundCommand("t3");
+		});
+
+		document.getElementById("t4Btn").addEventListener('click', function() {
+			sendSoundCommand("t4");
+		});
+
+		document.getElementById("t5Btn").addEventListener('click', function() {
+			sendSoundCommand("t5");
+		});
+
+		document.getElementById("t6Btn").addEventListener('click', function() {
+			sendSoundCommand("t6");
+		});
+
+		document.getElementById("custom1Btn").addEventListener('click', function() {
+			sendSoundCommand("custom1");
+		});
+
+		document.getElementById("custom2Btn").addEventListener('click', function() {
+			sendSoundCommand("custom2");
+		});
+
+		document.getElementById("custom3Btn").addEventListener('click', function() {
+			sendSoundCommand("custom3");
+		});
+
+		document.getElementById("custom4Btn").addEventListener('click', function() {
+			sendSoundCommand("custom4");
 		});
 
 		// ACTION SPEECH
@@ -201,10 +369,17 @@
 		  });
 		}
 
-		function sendledCommand(ledCommand) {
-			logCommand(speechCommand);
+		function sendLedCommand(ledCommand) {
+			logCommand(ledCommand);
 			const encoder = new TextEncoder('utf-8');
-  			const commandToSend = encoder.encode(speechCommand);
+  			const commandToSend = encoder.encode(ledCommand);
+			myCharateristic.writeValueWithoutResponse(commandToSend);
+		}
+
+		function sendSoundCommand(soundCommand) {
+			logCommand(soundCommand);
+			const encoder = new TextEncoder('utf-8');
+  			const commandToSend = encoder.encode(soundCommand);
 			myCharateristic.writeValueWithoutResponse(commandToSend);
 		}
 
