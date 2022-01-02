@@ -1,6 +1,6 @@
-const bluetoothName = 'DSD TECH';
-const bluetoothUUIDservice = '0000ffe0-0000-1000-8000-00805f9b34fb';
-const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
+const bluetoothName = 'Delorean Controller';
+const bluetoothUUIDservice = '0000180a-0000-1000-8000-00805f9b34fb';
+const bluetoothUUIDcharacteristic = '00002a57-0000-1000-8000-00805f9b34fb';
 
 var command;
 var myCharateristic;
