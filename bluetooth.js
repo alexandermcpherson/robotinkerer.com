@@ -2,7 +2,7 @@ const bluetoothName = 'DSD TECH';
 const bluetoothUUIDservice = '0000ffe0-0000-1000-8000-00805f9b34fb';
 const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
 
-var ledCommand;
+var command;
 var myCharateristic;
 var bluetoothDevice;
 var connected = false;
@@ -114,10 +114,10 @@ function reconnect() {
   });
 }
 
-function sendLedCommand(ledCommand) {
-	logCommand(ledCommand);
+function sendCommand(command) {
+	logCommand(command);
 	const encoder = new TextEncoder('utf-8');
-	const commandToSend = encoder.encode(ledCommand);
+	const commandToSend = encoder.encode(command);
 	myCharateristic.writeValueWithoutResponse(commandToSend);
 }
 
