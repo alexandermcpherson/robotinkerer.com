@@ -123,6 +123,17 @@ function sendCommand(command) {
 	myCharateristic.writeValueWithoutResponse(command);
 }
 
+const bytesArray = (n) => {
+  if (!n) return new ArrayBuffer(0)
+  const a = []
+  a.unshift(n & 255)
+  while (n >= 256) {
+    n = n >>> 8
+    a.unshift(n & 255)
+  }
+  return new Uint8Array(a).buffer
+}
+
 function logCommand(command) {
 	console.log('Sending command: ' + command);
 }	
