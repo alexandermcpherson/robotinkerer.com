@@ -2,10 +2,7 @@ const bluetoothName = 'DSD TECH';
 const bluetoothUUIDservice = '0000ffe0-0000-1000-8000-00805f9b34fb';
 const bluetoothUUIDcharacteristic = '0000ffe1-0000-1000-8000-00805f9b34fb';
 
-var speechCommand = "sc";
-var movementCommand = "activate";
 var ledCommand;
-var soundCommand;
 var myCharateristic;
 var bluetoothDevice;
 var connected = false;
@@ -121,27 +118,6 @@ function sendLedCommand(ledCommand) {
 	logCommand(ledCommand);
 	const encoder = new TextEncoder('utf-8');
 	const commandToSend = encoder.encode(ledCommand);
-	myCharateristic.writeValueWithoutResponse(commandToSend);
-}
-
-function sendSoundCommand(soundCommand) {
-	logCommand(soundCommand);
-	const encoder = new TextEncoder('utf-8');
-	const commandToSend = encoder.encode(soundCommand);
-	myCharateristic.writeValueWithoutResponse(commandToSend);
-}
-
-function sendSpeechCommand() {
-	logCommand(speechCommand);
-	const encoder = new TextEncoder('utf-8');
-	const commandToSend = encoder.encode(speechCommand);
-	myCharateristic.writeValueWithoutResponse(commandToSend);
-}
-
-function sendMovementCommand() {
-	logCommand(movementCommand);
-	const encoder = new TextEncoder('utf-8');
-	const commandToSend = encoder.encode(movementCommand);
 	myCharateristic.writeValueWithoutResponse(commandToSend);
 }
 

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>T800-Controller</title>
+		<title>Controller</title>
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -10,26 +10,11 @@
 		<link href="https://fonts.cdnfonts.com/css/terminator-real-nfi-2" rel="stylesheet">
 		<link rel="stylesheet" href="styles.css">
 		<link rel="stylesheet" href="nav.css">
-		<link rel="stylesheet" href="dpad.css">
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Y27CS9BWJ"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-
-		  gtag('config', 'G-3Y27CS9BWJ');
-		</script>
 	</head>
 	<body>
 		<ul class="topnav">
 		<div class="topnav-left">		
-		  <li><a class="active" href="#controller">T800 Controller</a></li>
-		</div>
-		<div class="topnav-right">
-		  <li><a href="instructions.html">Instructions</a></li>
-		  <li><a href="demos.html">Demos</a></li>
-		  <li><a href="bugs.html">Bug Tracker</a></li>
+		  <li><a class="active" href="#controller">Controller</a></li>
 		</div>
 		</ul>
 		<h1>Connection</h1>
@@ -37,103 +22,16 @@
 		<br>
 		<p>Note: All inputs are disabled below until you have succesfully connected to the T800</p>
 		<div id="inputs" class="disable-inputs">
-			<div id="gray-bg" class="section-padding">
-				<h1 class="h-padding-bottom"><u>Lights</u></h1>
-				<h3>Toggle Leds</h3>
-					<button id="redLed1Btn" class="button red_button button_corners toggler">Off</button><button id="redLed2Btn" class="button red_button button_corners">Off</button><br>
-					<button id="blueLed1Btn" class="button blue_button button_corners">Off</button><button id="blueLed2Btn" class="button blue_button button_corners">Off</button><br>
-					<button id="allRedLedBtn" class="button red_button button_corners wide_button">All Red Off</button><br>
-					<button id="allBlueLedBtn" class="button blue_button button_corners wide_button">All Blue Off</button><br>
-					<button id="eyeLedsBtn" class="button red_button button_corners wide_button">Eyes Off</button><br>
-				<h3>Fire Plasma</h3>
-					<button id="plasmaLed1Btn" class="button plasma_button button_corners">1</button><button id="plasmaLed2Btn" class="button plasma_button button_corners">2</button><br>
-					<button id="plasmaLed3Btn" class="button plasma_button button_corners">3</button><button id="plasmaLed4Btn" class="button plasma_button button_corners">4</button><br>
-					<button id="plasmaRandomLedBtn" class="button plasma_button button_corners wide_button">Random</button><br>
-				</div>
 			<div id="white-bg" class="section-padding">	
 				<h1 class="h-padding-bottom"><u>Sounds</u></h1>
 				<h3>Play Movie Score</h3>
 					<button id="t1Btn" class="button sound_button button_corners">1</button><button id="t2Btn" class="button sound_button button_corners">2</button><br>
 					<button id="t3Btn" class="button sound_button button_corners">3</button><button id="t4Btn" class="button sound_button button_corners">4</button><br>
 					<button id="t5Btn" class="button sound_button button_corners">5</button><button id="t6Btn" class="button sound_button button_corners">6</button><br>
-				<h3>Play Custom Movie Score</h3>
-					<button id="custom1Btn" class="button sound_button button_corners">1</button><button id="custom2Btn" class="button sound_button button_corners">2</button><br>
-					<button id="custom3Btn" class="button sound_button button_corners">3</button><button id="custom4Btn" class="button sound_button button_corners">4</button><br>
-			</div>
-			<div id="gray-bg" class="section-padding">
-				<h1 class="h-padding-bottom"><u>Actions</u></h1>
-				<label for="speech-commands">Choose Speech command:</label><br>
-				<select id="speech-commands" name="speech-commands">
-					<optgroup label = "T1">
-						<option value="sc" selected="selected">Sarah Connor</option>
-						<option value="fya">Fuck you asshole</option>
-						<option value="ibb1" disabled>Ill be back</option>
-						<option value="ycgttmn" disabled>Your clothes give them to me now</option>
-					  	<option value="ncr" disabled>Nothing clean right</option>
-						<option value="45lswls" disabled>45 Long Slide with Lazer sighting</option>
-						<option value="go" disabled>Get out</option>				
-					  	<option value="u9" disabled>Uzi 9mm</option>
-				  	</optgroup>
-				  	<optgroup label = "T2">
-				  		<option value="alvb" disabled>Asta La Vista Baby</option>
-						<option value="np" disabled>No problemo</option>
-						<option value="ibb2" disabled>Ill be back</option>
-						<option value="tm" disabled>Trust me</option>
-					  	<option value="ltmvc" disabled>Listen to me very carefully</option>
-						<option value="iaat" disabled>I am a Terminator</option>
-						<option value="csm1" disabled>Cyberdyne systems Model 101</option>				
-					  	<option value="inycybaym" disabled>I need your clothes your boots and your motorcycle</option>
-						<option value="toommp" disabled>Thats one of my mission parameters</option>
-						<option value="iknwyc" disabled>I now know why you cry</option>
-						<option value="hl" disabled>He'll live</option>
-					  	<option value="cd" disabled>Chillout dickwad</option>
-						<option value="4cwmiywtl" disabled>Come with me if you want to live</option>
-				  	</optgroup>
-				  	<optgroup label = "T3">
-				  		<option value="iaam" disabled>I am a machine</option>
-						<option value="yat" disabled>You are Terminated</option>
-						<option value="ddt" disabled>Don't do that</option>
-					</optgroup> 
-				</select>
-				<p id="speechCommandSelection">You selected: Sarah Connor</p>
-				<button id="sendSpeechCommandBtn" class="button action_button send_button button_corners">Affirmative</button>
-				<br><br>
-				<label for="movement-commands">Choose Movement command:</label><br>
-				<select id="movement-commands" name="movement-commands">
-					<option value="activate" selected="selected">Activate T800</option>
-					<option value="deactivate">Deactivate T800</option>
-					<option value="randomHeadlr">Random Head left to right</option>
-					<option value="randomHeadud">Random Head up and down</option>
-					<option value="randomHeadfr">Random Head full range</option>				
-				  	<option value="epic_mode_1">T1 Epic Mode</option>
-				  	<option value="epic_mode_2">T2 Epic Mode</option>
-				</select>
-				<br>
-				<p id="movementCommandSelection">You selected: Activate T800</p>
-				<button id="sendActionCommandBtn" class="button action_button send_button button_corners">No Problemo</button>
-			</div>
-			<div id="white-bg" class="section-padding">	
-				<h1 class="h-padding-bottom"><u>D-Pad & O-Pad</u></h1>
-				<p>D-Pad: Head Up, Down, Left & Right<br>O-Pad: Eyes Left & Right<br>O-Pad: Jaw Up & Down</p>
-				<div class="set dark">
-				  <nav class="d-pad">
-				    <a class="up" id="d-up" href="#"></a>
-				    <a class="right" id="d-right" href="#"></a>
-				    <a class="down" id="d-down" href="#"></a>
-				    <a class="left" id="d-left" href="#"></a>  
-				  </nav>
-				  <nav class="o-pad">
-				    <a class="up" id="o-up" href="#"></a>
-				    <a class="right" id="o-right" href="#"></a>
-				    <a class="down" id="o-down" href="#"></a>
-				    <a class="left" id="o-left" href="#"></a>  
-				  </nav>
-				</div>
 			</div>
 		</div>
 	</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="bluetooth.js"></script>
 	<script src="actions.js"></script>
-	<script src="dpad.js"></script>
 </html>
