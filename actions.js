@@ -1,27 +1,27 @@
 $(function() {
 
     $("#btn1").click( function() {
-        sendCommand("0x1");
+        sendCommand("1");
     });
 
     $("#btn2").click( function() {
-        sendCommand("0x2");
+        sendCommand("2");
     });
 
     $("#btn3").click( function() {
-        sendCommand("0x3");
+        sendCommand("3");
     });
 
     $("#btn4").click( function() {
-        sendCommand("0x4");
+        sendCommand("4");
     });
 
     $("#btn5").click( function() {
-        sendCommand("0x5");
+        sendCommand("5");
     });
 
     $("#btn6").click( function() {
-        sendCommand("0x6");
+        sendCommand("6");
     });
 
     $("#btnAllOn").click( function() {
