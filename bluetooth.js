@@ -119,8 +119,8 @@ function sendCommand(command) {
 	// var hex = command.toString(16);
 
 	// const encoder = new TextEncoder('utf-8');
-	// const commandToSend = encoder.encode(hex);
-	myCharateristic.writeValueWithoutResponse(command);
+	const commandToSend = encoder.encode(command);
+	myCharateristic.writeValueWithoutResponse(commandToSend);
 }
 
 const bytesArray = (n) => {
