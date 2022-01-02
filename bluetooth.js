@@ -116,8 +116,7 @@ function reconnect() {
 
 function sendCommand(command) {
 	logCommand(command);
-	const encoder = new TextEncoder('utf-8');
-	const commandToSend = encoder.encode(command);
+	var commandToSend = command.toString(16); // Convert to hex
 	myCharateristic.writeValueWithoutResponse(commandToSend);
 }
 
