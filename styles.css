@@ -1,24 +1,15 @@
 body {
     font-family: 'Terminator Real NFI', sans-serif;
-    margin-top: 20px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
+    margin: 0px;
     padding:0;
     text-align:center;
 }
 
-#gray-bg {
-  background-color: lightgray;
-}
+#gray-bg {background-color: lightgray;}
 
-#white-bg {
-  background-color: white;
-}
+#white-bg {background-color: white;}
 
-.section-padding {
-  padding: 25px 0px 50px 0px;
-}
+.section-padding {padding: 25px 0px 50px 0px;}
 
 .button {
   border: none;
@@ -52,12 +43,45 @@ body {
 
 .wide_button {width: 125px;}
 
+.send_button {width: 135px;}
+
 .button_corners {border-radius: 8px;}
 
-.h-padding-bottom {
-  padding-bottom: 25px;
+.h-padding-bottom {padding-bottom: 25px;}
+
+.dpad-label {padding-bottom: 100px;}
+
+label{
+    display: block; /* add this */
+    padding-bottom: 0px;
 }
 
-.dpad-label {
-  padding-bottom: 100px;
+p {
+  font-family: sans-serif;
+  font-size: 10px;
+}
+
+#t800Video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+
+.disable-inputs {
+   opacity: 0.5;
+}
+
+.enable-inputs {
+   opacity: 1.0;
 }
