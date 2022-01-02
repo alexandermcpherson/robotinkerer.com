@@ -116,11 +116,11 @@ function reconnect() {
 
 function sendCommand(command) {
 	logCommand(command);
-	var hex = command.toString(16);
+	// var hex = command.toString(16);
 
-	const encoder = new TextEncoder('utf-8');
-	const commandToSend = encoder.encode(hex);
-	myCharateristic.writeValueWithoutResponse(commandToSend);
+	// const encoder = new TextEncoder('utf-8');
+	// const commandToSend = encoder.encode(hex);
+	myCharateristic.writeValueWithoutResponse(command);
 }
 
 function logCommand(command) {
