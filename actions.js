@@ -25,11 +25,11 @@ $(function() {
     });
 
     $("#btnAllOn").click( function() {
-        sendCommand("btnAllOn");
+        sendCommand("7");
     });
 
     $("#btnAllOff").click( function() {
-        sendCommand("btnAllOff");
+        sendCommand("8");
     });
 
 });
