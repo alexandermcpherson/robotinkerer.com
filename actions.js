@@ -1,35 +1,35 @@
 $(function() {
 
     $("#btn1").click( function() {
-        sendCommand("1");
+        sendCommand(1);
     });
 
     $("#btn2").click( function() {
-        sendCommand("2");
+        sendCommand(2);
     });
 
     $("#btn3").click( function() {
-        sendCommand("3");
+        sendCommand(3);
     });
 
     $("#btn4").click( function() {
-        sendCommand("4");
+        sendCommand(4);
     });
 
     $("#btn5").click( function() {
-        sendCommand("5");
+        sendCommand(5);
     });
 
     $("#btn6").click( function() {
-        sendCommand("6");
+        sendCommand(6);
     });
 
     $("#btnAllOn").click( function() {
-        sendCommand("7");
+        sendCommand(7);
     });
 
     $("#btnAllOff").click( function() {
-        sendCommand("8");
+        sendCommand(8);
     });
 
 });
