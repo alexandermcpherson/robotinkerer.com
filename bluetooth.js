@@ -143,5 +143,5 @@ function logError(error) {
 }
 
 function debug(output) {
-	$("debug-log").text(output);
+	$("#debug-log").text(output);
 }
