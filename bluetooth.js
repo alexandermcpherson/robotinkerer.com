@@ -1,4 +1,4 @@
-const bluetoothName = 'Delorean Controller';
+const bluetoothName = 'test';
 const bluetoothUUIDservice = '0000180a-0000-1000-8000-00805f9b34fb';
 const bluetoothUUIDcharacteristic = '00002a57-0000-1000-8000-00805f9b34fb';
 
