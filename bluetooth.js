@@ -14,10 +14,10 @@ $(function() {
 document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
 	bluetoothDevice = null;
   	navigator.bluetooth.requestDevice({
-    filters: [{
-	    name: bluetoothName,
-	    services: [bluetoothUUIDservice]
-	  }]
+   //  filters: [{
+	  //   name: bluetoothName,
+	  //   services: [bluetoothUUIDservice]
+	  // }]
   	})
   	.then(device => {
   		bluetoothDevice = device;
