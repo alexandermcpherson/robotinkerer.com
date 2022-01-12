@@ -22,9 +22,11 @@ document.getElementById("discoverBluetoothBtn").addEventListener('click', functi
   	.then(device => {
   		bluetoothDevice = device;
     	console.log('> Requested ' + device.name + ' (' + device.id + ')');
+    	debug('> Requested ' + device.name + ' (' + device.id + ')');
 	    bluetoothDevice.addEventListener('gattserverdisconnected', onDisconnected);
 	    // Attempts to connect to remote GATT Server.
 	    connected = true;
+	    debug('> Bluetooth connected');
 	    setState();
 			return device.gatt.connect();
   	})
@@ -75,9 +77,11 @@ function setState() {
 
 function connect() {
   console.log('Connecting to Bluetooth Device...');
+  debug('Connecting to Bluetooth Device...');
   return bluetoothDevice.gatt.connect()
   .then(server => {
     console.log('> Bluetooth Device connected');
+    debug('> Bluetooth Device connected');
   });
 }
 
@@ -86,10 +90,12 @@ function disconnect() {
     return;
   }
   console.log('Disconnecting from Bluetooth Device...');
+  debug('Disconnecting from Bluetooth Device...');
   if (bluetoothDevice.gatt.connected) {
     bluetoothDevice.gatt.disconnect();
   } else {
     console.log('> Bluetooth Device is already disconnected');
+    debug('> Bluetooth Device is already disconnected');
   }
 }
 
@@ -98,6 +104,7 @@ function onDisconnected(event) {
   connected = false;
   setState();
   console.log('> Bluetooth Device disconnected');
+  debug('> Bluetooth Device disconnected');
 }
 
 function reconnect() {
@@ -106,11 +113,13 @@ function reconnect() {
   }
   if (bluetoothDevice.gatt.connected) {
     console.log('> Bluetooth Device is already connected');
+      debug('> Bluetooth Device is already connected');
     return;
   }
   connect()
   .catch(error => {
     console.log('Argh! ' + error);
+    debug('Argh! ' + error);
   });
 }
 
@@ -125,8 +134,14 @@ function sendCommand(command) {
 
 function logCommand(command) {
 	console.log('Sending command: ' + command);
+	debug('Sending command: ' + command);
 }	
 
 function logError(error) {
 	console.log('Error: ' + error);
+	debug('Error: ' + error);
+}
+
+function debug(output) {
+	$("debug-log").text(output);
 }
