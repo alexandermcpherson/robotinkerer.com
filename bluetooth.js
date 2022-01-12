@@ -1,4 +1,4 @@
-const bluetoothName = 'test';
+const bluetoothName = 'Delorean Controller';
 const bluetoothUUIDservice = '0000180a-0000-1000-8000-00805f9b34fb';
 const bluetoothUUIDcharacteristic = '00002a57-0000-1000-8000-00805f9b34fb';
 
@@ -14,11 +14,10 @@ $(function() {
 document.getElementById("discoverBluetoothBtn").addEventListener('click', function() {
 	bluetoothDevice = null;
   	navigator.bluetooth.requestDevice({
-  		acceptAllDevices: true
-   //  filters: [{
-	  //   name: bluetoothName,
-	  //   services: [bluetoothUUIDservice]
-	  // }]
+    filters: [{
+	    name: bluetoothName,
+	    services: [bluetoothUUIDservice]
+	  }]
   	})
   	.then(device => {
   		bluetoothDevice = device;
